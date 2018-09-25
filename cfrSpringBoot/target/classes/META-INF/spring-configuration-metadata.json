@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "propertiesdemo.PropertiesDemoConfig",
+      "name": "properties.demo",
+      "type": "propertiesdemo.PropertiesDemoConfig"
+    }
+  ],
+  "properties": []
+}

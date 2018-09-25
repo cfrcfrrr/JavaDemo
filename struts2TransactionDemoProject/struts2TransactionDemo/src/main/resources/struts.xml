@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--打开开发者模式，有更详细的打印-->
+    <constant name="struts.devMode" value="true"></constant>
+    <package name="default" extends="struts-default" namespace="/">
+        <action name="test" class="action.Struts2TransactionDemoAction" method="test">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="success" class="" method="">
+            <result name="success">/index.jsp</result>
+        </action>
+    </package>
+</struts>

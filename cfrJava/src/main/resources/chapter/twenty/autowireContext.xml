@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="depta" class="chapter.twenty.AutowireDept" autowire-candidate="false"> <!-- 设置自动装配时退出 -->
+		<property name="deptno" value="10"></property>
+	</bean>
+	<bean id="deptb" class="chapter.twenty.AutowireDept"> <!-- 默认设置 -->
+		<property name="deptno" value="20"></property>
+	</bean>
+	<bean id="deptc" class="chapter.twenty.AutowireDept" primary="true"> <!-- 设置自动装配时优先选择，两种自动装配的最终结果都等于这里设置的值 -->
+		<property name="deptno" value="30"></property>
+	</bean>
+	
+	<bean id="empa" class="chapter.twenty.AutowireEmp" autowire="byType"> <!-- 参数自动装配 ，需保留有无参构造-->
+		<property name="empno" value="10000"></property>
+	</bean>
+	
+	<bean id="empb" class="chapter.twenty.AutowireEmp" autowire="constructor"> <!-- 构造方法自动装配， 需实现参数为dept的有参构造-->
+		<property name="empno" value="20000"></property>
+	</bean>
+</beans>

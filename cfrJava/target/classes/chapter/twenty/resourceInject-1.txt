@@ -1,0 +1,4 @@
+this
+is
+resourceInject
+1

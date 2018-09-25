@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-autowire="byName">
+
+	<!-- 使Spring关注Annotation -->
+	<context:annotation-config />
+	
+	<!-- 读取参数配置文件信息 -->
+	<!-- <context:property-placeholder location="classpath*:jta.properties"/> -->
+	
+	<bean id="BaseService" class="service.impl.BaseServiceImpl" />
+
+	<!-- 让Spring通过自动扫描来查询和管理Bean -->
+	<context:component-scan base-package="*">
+		<context:include-filter type="regex" expression=".dao.impl.*"/>
+		<context:include-filter type="regex" expression=".serviec.impl.*"/>
+		<context:include-filter type="regex" expression=".entity.*"/>
+	</context:component-scan>
+	
+	<!-- 数据库tms -->
+	<bean class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close" 
+		id="tmsDataSource">
+		 <!-- Set unique name for this DataSource -->  
+        <property name="uniqueResourceName"><value>mysql/tms</value></property>
+        <!-- Set XADatasource class name-->  
+        <property name="xaDataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" />
+        <property name="xaProperties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">root</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/tms</prop>
+            </props>
+        </property>
+        <!-- set properties for datasource connection pool -->  
+        <property name="poolSize" value="3" />
+        <!-- 管理 Connection 被占用的时间 -->
+        <!-- 如果不设置这个值，Atomikos使用默认的300秒(即5分钟)，那么在处理大批量数据读取的时候，一旦超过5分钟，就会抛出类似 Resultset is close 的错误 -->
+        <property name="reapTimeout"><value>20000</value></property>  
+	</bean>
+	
+	
+	<!-- 数据库his -->
+	<bean class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close"
+		 id="hisDataSource">
+		<property name="uniqueResourceName"><value>mysql/his</value></property>
+        <property name="xaDataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlXADataSource" />
+        <property name="xaProperties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">root</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/his</prop>
+            </props>
+        </property>
+        <!-- 连接池里面连接的个数 -->
+        <property name="poolSize" value="3" />
+        <!-- 管理 Connection 被占用的时间 -->
+        <!-- 如果不设置这个值，Atomikos使用默认的300秒(即5分钟)，那么在处理大批量数据读取的时候，一旦超过5分钟，就会抛出类似 Resultset is close 的错误 -->
+        <property name="reapTimeout"><value>20000</value></property>  
+	</bean>
+
+	<!-- sessionFactory的配置 -->
+
+	 <!-- 将hibernate数据源注入sessionFactory -->
+    <bean id="tmsSessionFactory"
+        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="tmsDataSource" />
+        <property name="packagesToScan">
+            <list>
+                <value>entity</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- 慎重(推荐禁止) 固定为update -->
+                <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- 将hibernate数据源注入sessionFactory -->
+    <bean id="hisSessionFactory"
+        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="hisDataSource" />
+        <property name="packagesToScan">
+            <list>
+                <value>entity</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- 慎重(推荐禁止) 固定为update -->
+                <!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+            </props>
+        </property>
+    </bean>    
+	
+	<!-- atomikos事务管理器 -->
+    <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" 
+        init-method="init" destroy-method="close">
+        <description>UserTransactionManager</description>  
+        <property name="forceShutdown">
+            <value>true</value>
+        </property>
+    </bean>
+	
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+        <property name="transactionTimeout" value="300" />
+    </bean>
+        
+    <!-- spring 事务管理器 -->
+    <bean id="transactionManager"
+        class="org.springframework.transaction.jta.JtaTransactionManager">
+        <property name="transactionManager" ref="atomikosTransactionManager"/>
+        <property name="userTransaction" ref="atomikosUserTransaction" />
+        <property name="allowCustomIsolationLevels" value="true"/> 
+    </bean>
+
+    <!-- 使用annotation定义事务，对于要加入事物的类，只需对该类加 @Transactional  -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- hibernate Dao层模板 -->
+    <bean id="tmsHibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="tmsSessionFactory"></property>
+    </bean>
+    
+    <bean id="hisHibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="hisSessionFactory"></property>
+    </bean>
+	
+</beans>

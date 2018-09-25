@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="chapter.twenty"></context:component-scan>
+	<aop:config>
+		<!-- 定义切入点 -->
+		<aop:pointcut expression="execution(* chapter.twenty..*.*(..)) and args(vo))" id="pointcut"/>
+		<!-- 定义切面 -->
+		<aop:aspect ref="AOPDeepServiceAspect">
+			<!-- 参数拦截 -->
+			<!-- 拦截传递给方法的参数，不管变量名设置为什么，都表示传递进来的参数，参数名需要和定义切点处一致 -->
+			<!-- 遗留：如果有多个参数怎么接收 -->
+			<aop:before method="beforeParaIntercept" pointcut-ref="pointcut" arg-names="vo"/> <!-- 此处的参数名称和切入点定义处声明的参数名称需一致 -->
+			<!-- 也可不单独定义切入点，在定义切面同时定义切入点 -->
+			<!-- <aop:before method="beforeParaIntercept" pointcut="execution(* chapter.twenty..*.*(..)) and args(vo))" arg-names="vo"/>  -->
+			<!-- 返回结果拦截 -->
+			<aop:after-returning method="afterReturningResultIntercept" pointcut="execution(* chapter.twenty..*.*(..))" returning="ret" arg-names="ret"/>
+			<!-- 异常拦截 -->
+			<!-- 要验证这里需要修改实现类，使其抛出异常 -->
+			<aop:after-throwing method="afterThrowingExceptionIntercept" pointcut="execution(* chapter.twenty..*.*(..))" throwing="e" arg-names="e"/>
+			<!-- 环绕拦截 -->
+			<aop:around method="around" pointcut="execution(* chapter.twenty..*.*(..))"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

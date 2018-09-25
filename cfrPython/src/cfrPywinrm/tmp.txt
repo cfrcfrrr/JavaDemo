@@ -1,0 +1,31 @@
+b'\r\n
+Windows IP Configuration\r\n\r\n\r\n
+Ethernet adapter \xb1\xbe\xb5\xd8\xc1\xac\xbd\xd3:\r\n\r\n   
+Connection-specific DNS Suffix  . : localdomain\r\n   
+Link-local IPv6 Address . . . . . : fe80::8ccf:3f06:46b1:35b3%10\r\n   
+IPv4 Address. . . . . . . . . . . : 192.168.18.130\r\n   
+Subnet Mask . . . . . . . . . . . : 255.255.255.0\r\n   
+Default Gateway . . . . . . . . . : 192.168.18.2\r\n\r\nTunnel 
+adapter \xb1\xbe\xb5\xd8\xc1\xac\xbd\xd3*:\r\n\r\n   
+Connection-specific DNS Suffix  . : localdomain\r\n   
+Link-local IPv6 Address . . . . . : fe80::5efe:192.168.18.130%11\r\n   
+Default Gateway . . . . . . . . . : \r\n\r\nTunnel adapter \xb1\xbe\xb5\xd8\xc1\xac\xbd\xd3* 8:\r\n\r\n   
+Connection-specific DNS Suffix  . : \r\n   
+IPv6 Address. . . . . . . . . . . : 2001:0:b7dd:fa0b:3080:442:3f57:ed7d\r\n   
+Link-local IPv6 Address . . . . . : fe80::3080:442:3f57:ed7d%12\r\n   
+Default Gateway . . . . . . . . . : ::\r\n'
+b''
+
+
+b'\r\n
+Interface: 192.168.18.130 --- 0xa\r\n  
+Internet Address      Physical Address      
+Type\r\n  
+192.168.18.1          00-50-56-c0-00-08     dynamic   \r\n 
+192.168.18.2          00-50-56-f7-c2-e0     dynamic   \r\n 
+192.168.18.254        00-50-56-f5-de-1a     dynamic   \r\n 
+192.168.18.255        ff-ff-ff-ff-ff-ff     static    \r\n 
+224.0.0.22            01-00-5e-00-00-16     static    \r\n 
+224.0.0.252           01-00-5e-00-00-fc     static    \r\n
+255.255.255.255       ff-ff-ff-ff-ff-ff     static    \r\n'
+b''

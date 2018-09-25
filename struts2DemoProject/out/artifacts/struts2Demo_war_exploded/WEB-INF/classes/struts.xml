@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--打开开发者模式，有更详细的打印-->
+    <constant name="struts.devMode" value="true"></constant>
+    <package name="struts_demo" extends="struts-default" namespace="/">
+        <!--表示如果访问的url是name属性的值（需要组合package配置的namespace路径，本例中为/action1.action或/action1），则执行class属性对应的类的method属性对应的方法-->
+        <!--然后根据返回值匹配result标签的name属性值，执行相应的操作-->
+        <action name="action1" class="action.Struts2DemoAction" method="action1">
+            <result name="success">/success.jsp</result>
+            <result name="ok">/ok.jsp</result>
+        </action>
+        <!--重定向页面时，配置type="redirect"与不配置，都可以-->
+        <action name="action2" class="action.Struts2DemoAction" method="action2">
+            <result name="success" type="redirect">/success.jsp</result>
+        </action>
+        <!--重定向action时，配置type="redirect"则标签值需要有<action名>.action，配置type="redirectAction"，则标签值只需要<action名>-->
+        <action name="action3" class="action.Struts2DemoAction" method="action3">
+            <result name="success" type="redirect">action2.action</result>
+        </action>
+        <!--重定向action时，会一直递归重定向下去-->
+        <action name="action4" class="action.Struts2DemoAction" method="action4">
+            <result name="success" type="redirectAction">action3</result>
+        </action>
+        <!--struts支持通配符，{N}对应name属性中的第N个*号，在class中也可以使用{N}-->
+        <!--*表示匹配除了斜杠（’/’）字符之外的零个或多个字符，**表示匹配零个或多个字符，包括斜杠（’/’）字符，\用作转义字符，因此\*匹配字符星号（*），\\匹配字符反斜杠（\）-->
+        <!--注意method属性只能是"{N}"，不能搭配其他字符，如"wildCard{1}"-->
+        <!--struts2.5之后，需要配置<allowed-methods>标签，配置合法的method，就是上面配置的action调用的method方法，此例中相当于配置合法的{1}-->
+        <action name="action_wildcard_*_*" class="action.Struts2DemoAction" method="{1}">
+            <result name="success">/wildcard_{1}_{2}.jsp</result>
+            <allowed-methods>test</allowed-methods>
+        </action>
+        <!--如果没有配置method属性，则默认执行execute()方法，推荐自定义的action类继承ActionSupport类，比如如果继承了就可以不自定义execute方法，会继承ActionSupport类的-->
+        <action name="action_null_method" class="action.Struts2DemoAction" method="">
+            <result name="success">/execute.jsp</result>
+        </action>
+        <!--如果没有配置class和method，则不执行方法，执行判断结果，而返回值的默认值是"success"-->
+        <action name="action_null" class="" method="">
+            <result name="success">/null.jsp</result>
+        </action>
+        <!--更多的扩展：https://blog.csdn.net/Holmofy/article/details/78387958-->
+    </package>
+</struts>

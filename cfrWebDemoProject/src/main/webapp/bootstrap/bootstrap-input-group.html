@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-input-group</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <!--基本输入框组-->
+    <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="text" class="form-control">
+        <span class="input-group-addon">.00</span>
+    </div>
+    <!--复选框作为前缀或后缀元素-->
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="checkbox">
+        </span>
+        <input type="text" class="form-control">
+    </div>
+    <!--单选框为前缀或后缀元素-->
+    <div class="input-group">
+        <span class="input-group-addon">
+            <input type="radio">
+        </span>
+        <input type="text" class="form-control">
+    </div>
+    <!--普通按钮作为前缀或后缀元素-->
+    <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+        </span>
+        <input type="text" class="form-control">
+    </div>
+    <!--不能这么做，表现异常-->
+    <!--<div class="input-group">-->
+    <!--<span class="input-group-addon">-->
+    <!--<button class="btn btn-default" type="button">Go!</button>-->
+    <!--</span>-->
+    <!--<input type="text" class="form-control">-->
+    <!--</div>-->
+    <!--下拉菜单按钮作为前缀或后缀元素-->
+    <div class="input-group">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default
+                        dropdown-toggle" data-toggle="dropdown">下拉菜单
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">aaa</a>
+                </li>
+                <li>
+                    <a href="#">bbb</a>
+                </li>
+            </ul>
+        </div>
+        <input type="text" class="form-control">
+    </div>
+</div>
+</body>
+</html>

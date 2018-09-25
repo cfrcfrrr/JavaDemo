@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- lazy-init属性表示延迟加载，在第一次使用bean时才加载（不推荐），init-method定义初始化方法，destroy-method定义销毁方法 -->
+	<bean id="beanOtherConfigDemoBean" class="chapter.twenty.beanotherconfigdemo.BeanOtherConfigDemoBean" lazy-init="true" init-method="init" destroy-method="destroy"></bean>
+</beans>

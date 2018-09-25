@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!--建表语句：
+CREATE TABLE `entitya` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(20) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+-->
+<hibernate-mapping>
+    <class name="entity.Struts2TransactionDemoEntityA" table="entitya">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"  type="java.lang.String" length="20" />
+    </class>
+</hibernate-mapping>

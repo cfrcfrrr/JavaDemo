@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-button-plugin</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<button id="myButtons1" class="btn btn-primary" data-loading-text="Loading..."
+        type="button"> 加载状态
+</button>
+<button type="button" class="btn btn-primary"
+        data-toggle="button"> 按压状态方式1
+</button>
+<button type="button" class="btn btn-primary" id="myButtons2">按压状态方式2
+</button>
+<button type="button" class="btn btn-primary" id="myButton3"
+        data-complete-text="Loading finished">loading后切换文字
+</button>
+
+<script>
+    $(function () {
+        $("#myButtons1").click(function () {
+            $(this).button('loading').delay(1000).queue(function () {
+                $(this).button('reset');
+                $(this).dequeue();
+            });
+        });
+    });
+    $(function () {
+        $("#myButtons2").click(function(){
+            $(this).button('toggle');
+        });
+    });
+    $(function() {
+        $("#myButton3").click(function(){
+            $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('complete');
+            });
+        });
+    });
+</script>
+</body>
+</html>

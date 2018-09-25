@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap_grid</title>
+    <!--引用本地文件-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--CDN引用，就是直接引用网上的，不需要下到本地-->
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</head>
+<body>
+<div class="container">
+    <!--网格布局-->
+    <!--网格中每一行由12个单元组成，行中列所占用单元格总和需要小于等于12-->
+    <p>网格系统：</p>
+    <div class="row">
+        <!--此处定义此列在超小设备（xs，<768px）中占2个单元格，在小型设备（sm，>=768px）中占8个单元格，在中型设备（md >=992px）中占6个单元格，在大型设备（lg，>=1200px）中占4个单元格-->
+        <div class="col-xs-2 col-sm-8 col-md-6 col-lg-4" style="background-color: #dedef8; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                explicabo.
+            </p>
+        </div>
+        <div class="clearfix visible-xs"></div>
+        <!--此处定义此列在超小设备（xs，<768px）中占10个单元格，在小型设备（sm，>=768px）中占4个单元格，在中型设备（md >=992px）中占6个单元格，在大型设备（lg，>=1200px）中占8个单元格-->
+        <div class="col-xs-10 col-sm-4 col-md-6 col-lg-8" style="background-color: #dedef8; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+            <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia
+                non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+            </p>
+        </div>
+    </div>
+
+    <!--网格布局-列偏移，就是将列相对于起始位置偏移N个单元格-->
+    <!--不过好像新版本（4.1.3）的不支持这样了，3.3.7版本能看到效果-->
+    <p>列偏移：</p>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>这个段落会向右偏移3个单元格，在3.3.7版本会生效，但是最新的这个版本4.1.3不生效</p>
+        </div>
+    </div>
+
+    <!--嵌套列-->
+    <p>嵌套列：</p>
+    <div class="row">
+        <div class="col-md-3" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <h4>第一列</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="col-md-9" style="background-color: #dedef8;box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <h4>第二列 - 分为四个盒子</h4>
+            <div class="row">
+                <div class="col-md-6" style="background-color: #B18904; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                    <p>Consectetur art party Tonx culpa semiotics. Pinterest assumenda minim organic quis.</p>
+                </div>
+                <div class="col-md-6" style="background-color: #B18904; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                    <p> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="background-color: #B18904; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                    <p>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="col-md-6" style="background-color: #B18904; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--列排序-->
+    <p>列排序：讲道理第一列应该在后面，第二列应该在前面，也是新版本无效</p>
+    <div class="row">
+        <div class="col-md-4 col-md-push-8" style="background-color: #dedef8; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            第一列
+        </div>
+        <div class="col-md-8 col-md-pull-4" style="background-color: #dedef8; box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            第二列
+        </div>
+    </div>
+</div>
+</body>
+</html>

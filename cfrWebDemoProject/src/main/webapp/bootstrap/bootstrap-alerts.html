@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-alerts</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="alert alert-success">成功！很好地完成了提交。</div>
+<div class="alert alert-info">信息！请注意这个信息。</div>
+<div class="alert alert-warning">警告！请不要提交。</div>
+<div class="alert alert-danger">错误！请进行一些更改。</div>
+<!--可取消的警告-->
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    成功！很好地完成了提交。
+</div>
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert"
+            aria-hidden="true">
+        &times;
+    </button>
+    警告2
+</div>
+<script>
+    <!--.alert('close')会关闭所有取得的警告框-->
+    $(function(){
+        $(".close").click(function(){
+            $(".alert-success").alert('close');
+        });
+    });
+    $(function(){
+        $(".alert-success").bind('close.bs.alert', function () {
+            alert("close.bs.alert事件，close实例方法开始时触发");
+        });
+    });
+    $(function(){
+        $(".alert-success").bind('closed.bs.alert', function () {
+            alert("closed.bs.alert事件，close实例方法完成时触发");
+        });
+    });
+</script>
+<!--警告中的链接-->
+<div class="alert alert-success">
+    <a href="#" class="alert-link">成功！很好地完成了提交。</a>
+</div>
+</body>
+</html>

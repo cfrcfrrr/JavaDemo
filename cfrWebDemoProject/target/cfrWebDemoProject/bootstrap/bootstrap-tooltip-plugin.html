@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-tootip-plugin</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <h4>工具提示（Tooltip）插件 - 锚</h4>
+    这是一个 <a href="#" class="tooltip-test" data-toggle="tooltip" title="默认的 Tooltip" id="tooltip-default">默认的 Tooltip</a>.
+    这是一个 <a href="#" class="tooltip-test" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip"
+            id="tooltip-left">左侧的
+    Tooltip</a>.
+    这是一个 <a href="#" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip" id="tooltip-top">顶部的 Tooltip</a>.
+    这是一个 <a href="#" data-toggle="tooltip" data-placement="bottom" title="底部的 Tooltip" id="tooltip-bottom">底部的
+    Tooltip</a>.
+    <p class="tooltip-options">
+        这是一个
+        <a href="#" data-toggle="tooltip" data-placement="right" title="<h2>右侧的 Tooltip</h2>" id="tooltip-right">右侧的
+            Tooltip</a>
+    </p>
+    <br>
+    <h4>工具提示（Tooltip）插件 - 按钮</h4>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" title="默认的 Tooltip"> 默认的Tooltip</button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="左侧的 Tooltip">
+        左侧的Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="顶部的 Tooltip">顶部的
+        Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="底部的 Tooltip">
+        底部的Tooltip
+    </button>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="右侧的 Tooltip">
+        右侧的Tooltip
+    </button>
+    <script>
+        // $(function () {
+        //     $("[data-toggle='tooltip']").tooltip();
+        // });
+        $(function () {
+            $('#tooltip-default').tooltip('show');
+        });
+        $(function () {
+            $('#tooltip-left').tooltip('hide');
+        });
+        $(function () {
+            $('#tooltip-top').tooltip('destroy');
+        });
+        $(function () {
+            $('#tooltip-bottom').tooltip('toggle');
+        });
+        $(function () {
+            $(".tooltip-options a").tooltip({html: true});
+        });
+        $(function () {
+            $('#tooltip-default').on('show.bs.tooltip', function () {
+                alert("show.bs.tooltip事件，调用show方法时触发");
+            });
+        });
+        $(function () {
+            $('#tooltip-default').on('shown.bs.tooltip', function () {
+                alert("shown.bs.tooltip事件，show方法完成时触发");
+            });
+        });
+        $(function () {
+            $('#tooltip-default').on('hide.bs.tooltip', function () {
+                alert("hide.bs.tooltip事件，调用hide方法时触发");
+            });
+        });
+        $(function () {
+            $('#tooltip-default').on('hidden.bs.tooltip', function () {
+                alert("hidden.bs.tooltip事件，hiden方法完成时触发");
+            });
+        });
+
+    </script>
+</div>
+</body>
+</html>

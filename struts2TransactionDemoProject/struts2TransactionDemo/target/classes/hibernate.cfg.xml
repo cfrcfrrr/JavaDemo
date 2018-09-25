@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.datasource">java:/myDataSource</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/struts2_transaction</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="connection.autocommit">true</property>
+        <!--如果使用的是本地事务（数据库只有一个）则设置为thread，如果使用的是全局事务（数据库有多个）则设置为jta-->
+        <property name="current_session_context_class">thread</property>
+        <property name="javax.persistence.validation.mode">none</property>
+        <!--<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>-->
+        <!--<property name="transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>-->
+        <mapping resource="Struts2TransactionDemoEntityA.hbm.xml"/>
+        <mapping resource="Struts2TransactionDemoEntityB.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-dropdowns</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--下拉菜单-->
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">下拉菜单
+        <span class="caret"></span>
+    </button>
+    <!--如果使用pull-right类，则会右对齐打开下拉菜单-->
+    <!--<ul class="dropdown-menu pull-right" role="menu">-->
+    <ul class="dropdown-menu" role="menu">
+        <!--标题-->
+        <li role="presentation" class="dropdown-header">标题一</li>
+        <!--菜单项-->
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">菜单项1.1</a>
+        </li>
+        <li role="presentation" class="disabled">
+            <a role="menuitem" tabindex="-1" href="#">菜单项1.2（禁用）</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">菜单项1.3</a>
+        </li>
+        <!--分割线-->
+        <li role="presentation" class="divider"></li>
+        <li role="presentation" class="dropdown-header">标题二</li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">菜单2.1</a>
+        </li>
+    </ul>
+</div>
+<!--上拉菜单-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="dropup">
+    <button type="button" class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown">向上的下拉菜单
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">菜单项1.1</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">菜单项1.2</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

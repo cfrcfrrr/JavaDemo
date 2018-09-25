@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+	<bean id="col" class="chapter.twenty.CollectionInjectClass">
+		<property name="li">
+			<array value-type="java.lang.Integer"> <!-- 用array或list都可以 -->
+				<value>10</value>
+				<value>10</value>
+				<value>20</value>
+				<value>30</value>
+			</array>
+		</property>
+		<property name="ls">
+			<list value-type="java.lang.String">
+				<value>one</value> <!-- 注意这里不需要加引号  -->
+				<value>two</value>
+				<value>three</value>
+			</list>
+		</property>
+		<property name="sd">
+			<set value-type="java.lang.Double">
+				<value>100.0</value>
+				<value>100.0</value>
+				<value>200.2</value>
+				<value>300.33</value>
+			</set>
+		</property>
+		<property name="mis">
+			<map key-type="java.lang.Integer" value-type="java.lang.String">
+				<entry key="1" value="one"></entry>
+				<entry key="2" value="two"></entry>
+			</map>
+		</property>
+		<!-- Array、List、Set、Map等用得少，用得最多的是properties -->
+		<property name="pro">
+			<props>
+				<prop key="11">aaa</prop>
+				<prop key="22">bbb</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

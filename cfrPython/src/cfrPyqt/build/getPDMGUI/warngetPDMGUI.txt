@@ -1,0 +1,25 @@
+missing module named resource - imported by posix, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named posix - imported by os, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named _posixsubprocess - imported by subprocess, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named org - imported by pickle, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named readline - imported by cmd, code, pdb, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named _winreg - imported by platform, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named 'java.lang' - imported by platform, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named termios - imported by tty, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py, getpass
+missing module named grp - imported by shutil, tarfile, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named pwd - imported by posixpath, shutil, tarfile, http.server, webbrowser, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py, netrc, getpass
+missing module named _dummy_threading - imported by dummy_threading, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py
+missing module named 'org.python' - imported by copy, C:\Users\Administrator\eclipse-workspace\cfrPython\src\cfrPyqt\getPDMGUI.py, xml.sax
+missing module named PIL - imported by openpyxl.drawing.image
+missing module named Image - imported by openpyxl.drawing.image
+missing module named tests - imported by openpyxl.reader.excel
+missing module named _abcoll - imported by openpyxl.compat.odict
+missing module named dummy_thread - imported by openpyxl.compat.odict
+missing module named thread - imported by openpyxl.compat.odict
+missing module named pandas - imported by openpyxl.compat.numbers
+missing module named numpy - imported by openpyxl.compat.numbers
