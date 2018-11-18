@@ -1,0 +1,56 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "name": "spring.datasource.druid",
+      "type": "comparetraversalwithdatabasedemo.MyDruidConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "name": "spring.datasource.druid.driver-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "defaultValue": 0,
+      "name": "spring.datasource.druid.initial-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "defaultValue": 0,
+      "name": "spring.datasource.druid.max-active",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "defaultValue": 0,
+      "name": "spring.datasource.druid.max-wait",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "defaultValue": 0,
+      "name": "spring.datasource.druid.min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "name": "spring.datasource.druid.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "name": "spring.datasource.druid.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "comparetraversalwithdatabasedemo.MyDruidConfig",
+      "name": "spring.datasource.druid.username",
+      "type": "java.lang.String"
+    }
+  ]
+}
